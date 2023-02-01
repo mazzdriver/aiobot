@@ -25,6 +25,11 @@ async def send_photo_echo(message: Message):
     await message.reply_photo(message.photo[0].file_id)
 
 
+# этот хэндлер будет срабатывать на отправку боту гифок
+async def send_gif_echo(message: Message):
+    await message.reply_animation(message.animation.file_id)
+
+
 # Этот хэндлер будет срабатывать на отправку боту голосовых сообщений
 async def send_voice_echo(message: Message):
     await message.reply_voice(message.voice.file_id)
@@ -44,6 +49,7 @@ async def send_echo(message: Message):
 dp.message.register(process_start_command, Command(commands=["start"]))
 dp.message.register(process_help_command, Command(commands=['help']))
 dp.message.register(send_photo_echo, F.content_type == ContentType.PHOTO)
+dp.message.register(send_gif_echo, F.content_type == ContentType.ANIMATION)
 dp.message.register(send_voice_echo, F.content_type == ContentType.VOICE)
 dp.message.register(send_sticker_echo, F.content_type == ContentType.STICKER)
 dp.message.register(send_echo)
