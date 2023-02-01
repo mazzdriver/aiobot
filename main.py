@@ -27,7 +27,12 @@ async def send_photo_echo(message: Message):
 
 # Этот хэндлер будет срабатывать на отправку боту голосовых сообщений
 async def send_voice_echo(message: Message):
-    await message.reply_voice(message.voice[0].file_id)
+    await message.reply_voice(message.voice.file_id)
+
+
+# этот хэндлер будет срабатывать на отправку боту стикеров
+async def send_sticker_echo(message: Message):
+    await message.reply_sticker(message.sticker.file_id)
 
 
 # Этот хэндлер будет срабатывать на любые ваши текстовые сообщения,
@@ -40,6 +45,7 @@ dp.message.register(process_start_command, Command(commands=["start"]))
 dp.message.register(process_help_command, Command(commands=['help']))
 dp.message.register(send_photo_echo, F.content_type == ContentType.PHOTO)
 dp.message.register(send_voice_echo, F.content_type == ContentType.VOICE)
+dp.message.register(send_sticker_echo, F.content_type == ContentType.STICKER)
 dp.message.register(send_echo)
 
 if __name__ == '__main__':
