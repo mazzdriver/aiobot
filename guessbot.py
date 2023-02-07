@@ -28,7 +28,7 @@ def get_random_number() -> int:
 
 
 # Этот хэндлер будет срабатывать на команду "/start"
-@dp.message(Command(commands=['start']))
+@dp.message(lambda msg: msg.text == '/start')
 async def process_start_command(message: Message):
     await message.answer('Привет!\nДавай сыграем в игру "Угадай число"?\n\n'
                          'Чтобы получить правила игры и список доступных '
@@ -44,7 +44,7 @@ async def process_start_command(message: Message):
 
 
 # Этот хэндлер будет срабатывать на команду "/help"
-@dp.message(Command(commands=['help']))
+@dp.message(lambda msg: msg.text == '/help')
 async def process_help_command(message: Message):
     await message.answer(f'Правила игры:\n\nЯ загадываю число от 1 до 100, '
                          f'а вам нужно его угадать\nУ вас есть {ATTEMPTS} '
@@ -54,7 +54,7 @@ async def process_help_command(message: Message):
 
 
 # Этот хэндлер будет срабатывать на команду "/stat"
-@dp.message(Command(commands=['stat']))
+@dp.message(lambda msg: msg.text == '/stat')
 async def process_stat_command(message: Message):
     await message.answer(
                     f'Всего игр сыграно: '
@@ -63,7 +63,7 @@ async def process_stat_command(message: Message):
 
 
 # Этот хэндлер будет срабатывать на команду "/cancel"
-@dp.message(Command(commands=['cancel']))
+@dp.message(lambda msg: msg.text == '/cancel')
 async def process_cancel_command(message: Message):
     if users[message.from_user.id]['in_game']:
         await message.answer('Вы вышли из игры. Если захотите сыграть '
