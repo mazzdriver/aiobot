@@ -22,7 +22,7 @@ def custom_filter(some_list: list) -> bool:
         if isinstance(elem, int) or isinstance(elem, float):
             if elem % 7 == 0:
                 summ += elem
-    return 0 < summ < 83
+    return summ < 83
 
 
 def custom_filter_test(order, want):
