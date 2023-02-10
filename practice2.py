@@ -11,15 +11,18 @@
 # anonimous_filter = lambda x: x # продолжите анонимную функцию
 
 
-def anonimous_filter(parameter: str) -> bool:
+# def anonimous_filter(parameter: str) -> bool:
+
+    # return parameter.count('я') >= 23
+
     # yalist = list(filter( 'я', [let for let in parameter]))
     # return (len(yalist)) >= 23
 
-    yalist = []
-    for letter in parameter:
-        if letter == 'я':
-            yalist.append(letter)
-    return len(yalist) >= 23
+    # yalist = []
+    # for letter in parameter:
+    #     if letter == 'я':
+    #         yalist.append(letter)
+    # return len(yalist) >= 23
 
     # counter = 0
     # for letter in parameter:
@@ -27,8 +30,7 @@ def anonimous_filter(parameter: str) -> bool:
     #         counter += 1
     # return counter >= 23
 
-
-# anonimous_filter = (len(list(filter(lambda x: x == 'я', input())))) >= 23
+anonimous_filter = lambda x: x.lower().count('я') >= 23
 
 
 def anonimous_filter_test(parameter, expected):
@@ -42,6 +44,7 @@ anonimous_filter_test('Я - последняя буква в алфавите!',
 anonimous_filter_test('яяяяяяяяяяяяяяяяяяяяяяяя, яяяяяяяяяяяяяяяя и яяяяяяяя тоже!', True)
 anonimous_filter_test('я' * 13, False)
 anonimous_filter_test('я' * 33, True)
+anonimous_filter_test('Я' * 33, True)
 
 # def anonimous_filter(parameter: str) -> bool:
 #     counter = 0
